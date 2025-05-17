@@ -6,7 +6,7 @@ import { useState, useRef } from 'react';
 import { LanguageSelector } from '@/components/dashboard/language-selector';
 import { ArrowRight, Globe, Upload } from 'lucide-react';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
+//import { motion } from 'framer-motion';
 
 export function HeroSection() {
   const { login, isAuthenticated } = useAuth();
