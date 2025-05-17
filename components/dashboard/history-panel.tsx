@@ -30,7 +30,7 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
-import { toast } from '@/components/ui/use-toast';
+//import { toast } from '@/components/ui/use-toast';
 
 // Mock data for translation history
 const mockTranslations = [
@@ -69,19 +69,19 @@ export function HistoryPanel() {
   
   const handleDownload = (id: string) => {
     // In a real app, this would trigger a download from the server
-    toast({
-      title: "Download started",
-      description: "Your translation package is being downloaded.",
-    });
+    // toast({
+    //   title: "Download started",
+    //   description: "Your translation package is being downloaded.",
+    // });
   };
   
   const handleDelete = () => {
     if (itemToDelete) {
       setTranslations(translations.filter(t => t.id !== itemToDelete));
-      toast({
-        title: "Translation deleted",
-        description: "The translation has been deleted successfully.",
-      });
+      // toast({
+      //   title: "Translation deleted",
+      //   description: "The translation has been deleted successfully.",
+      // });
       setItemToDelete(null);
     }
   };

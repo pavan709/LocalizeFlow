@@ -13,7 +13,7 @@ import {
 import { Loader2, Upload, X } from 'lucide-react';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Badge } from '@/components/ui/badge';
-import { toast } from '@/components/ui/use-toast';
+//import { toast } from '@/components/ui/use-toast';
 import { Progress } from '@/components/ui/progress';
 import { FileUploader } from './file-uploader';
 import { LanguageSelector } from './language-selector';
@@ -50,11 +50,11 @@ export function UploadTranslatePanel() {
     const extension = '.' + selectedFile.name.split('.').pop()?.toLowerCase();
     
     if (!validExtensions.includes(extension)) {
-      toast({
-        title: "Invalid file format",
-        description: "Please upload a .json, .xml, .resw, or .pages file.",
-        variant: "destructive"
-      });
+      // toast({
+      //   title: "Invalid file format",
+      //   description: "Please upload a .json, .xml, .resw, or .pages file.",
+      //   variant: "destructive"
+      // });
       return;
     }
     
@@ -67,20 +67,20 @@ export function UploadTranslatePanel() {
   
   const startTranslation = async () => {
     if (!file) {
-      toast({
-        title: "No file selected",
-        description: "Please upload a file to translate.",
-        variant: "destructive"
-      });
+      // toast({
+      //   title: "No file selected",
+      //   description: "Please upload a file to translate.",
+      //   variant: "destructive"
+      // });
       return;
     }
     
     if (selectedLanguages.length === 0) {
-      toast({
-        title: "No languages selected",
-        description: "Please select at least one target language.",
-        variant: "destructive"
-      });
+      // toast({
+      //   title: "No languages selected",
+      //   description: "Please select at least one target language.",
+      //   variant: "destructive"
+      // });
       return;
     }
     
@@ -108,10 +108,10 @@ export function UploadTranslatePanel() {
       setProgress(100);
       
       // Show success message
-      toast({
-        title: "Translation complete",
-        description: `Your file has been translated to ${selectedLanguages.length} languages.`,
-      });
+      // toast({
+      //   title: "Translation complete",
+      //   description: `Your file has been translated to ${selectedLanguages.length} languages.`,
+      // });
       
       // Simulate download trigger
       setTimeout(() => {
@@ -129,11 +129,11 @@ export function UploadTranslatePanel() {
       
     } catch (error) {
       console.error('Translation error:', error);
-      toast({
-        title: "Translation failed",
-        description: "An error occurred during translation. Please try again.",
-        variant: "destructive"
-      });
+      // toast({
+      //   title: "Translation failed",
+      //   description: "An error occurred during translation. Please try again.",
+      //   variant: "destructive"
+      // });
       setIsTranslating(false);
       setProgress(0);
     }
