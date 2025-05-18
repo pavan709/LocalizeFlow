@@ -1,23 +1,23 @@
 "use client";
 
 import { useState } from 'react';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent } from '@/components/ui/card';
-import { 
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-import { Loader2, Upload, X } from 'lucide-react';
-import { ScrollArea } from '@/components/ui/scroll-area';
-import { Badge } from '@/components/ui/badge';
+ import { Button } from '@/components/ui/button';
+ import { Card, CardContent } from '@/components/ui/card';
+// import { 
+//   Select,
+//   SelectContent,
+//   SelectItem,
+//   SelectTrigger,
+//   SelectValue,
+// } from "@/components/ui/select";
+ import { Loader2, Upload, X } from 'lucide-react';
+// import { ScrollArea } from '@/components/ui/scroll-area';
+ import { Badge } from '@/components/ui/badge';
 //import { toast } from '@/components/ui/use-toast';
-import { Progress } from '@/components/ui/progress';
-import { FileUploader } from './file-uploader';
-import { LanguageSelector } from './language-selector';
-import { OutputFormatSelector } from './output-format-selector';
+ import { Progress } from '@/components/ui/progress';
+ import { FileUploader } from './file-uploader';
+ import { LanguageSelector } from './language-selector';
+ import { OutputFormatSelector } from './output-format-selector';
 
 // Mock translation process for demonstration
 const mockTranslate = (file: File, languages: string[], format: string) => {
@@ -42,7 +42,7 @@ export function UploadTranslatePanel() {
   const [selectedLanguages, setSelectedLanguages] = useState<string[]>([]);
   const [outputFormat, setOutputFormat] = useState<string>('json');
   const [isTranslating, setIsTranslating] = useState(false);
-  const [progress, setProgress] = useState(0);
+  const [progress, setProgress] = useState<number>(0);
   
   const handleFileSelected = (selectedFile: File) => {
     // Check file extension
@@ -216,7 +216,9 @@ export function UploadTranslatePanel() {
                       <span>Translation in progress...</span>
                       <span>{Math.round(progress)}%</span>
                     </div>
-                    <Progress value={progress} className="h-2" />
+                    <Progress value={typeof progress === 'number' && !isNaN(progress) && progress >= 0 && progress <= 100 ? progress : 0} className="h-2" />
+                    {/* <Progress value={12} className="h-2" /> */}
+
                   </div>
                   <p className="text-sm text-muted-foreground">
                     This may take a few moments depending on the file size and number of languages.
@@ -245,6 +247,7 @@ export function UploadTranslatePanel() {
               <div className="flex flex-wrap gap-2 mt-2">
                 <div className="font-medium text-sm">Target Languages:</div>
                 {selectedLanguages.map((lang) => (
+                  
                   <Badge key={lang} variant="secondary">
                     {lang}
                   </Badge>
